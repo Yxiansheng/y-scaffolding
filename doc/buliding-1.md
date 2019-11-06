@@ -8,10 +8,9 @@
 ```
     npm install webpack webpack-cli -D
 ```
-4. 创建打包输出文件夹 /dist
-5. 安装vue-loader、css-loader、vue-template-compiler: ```npm i css-loader vue-loader vue-template-compiler -D```
+4. 安装vue-loader、css-loader、vue-template-compiler: ```npm i css-loader vue-loader vue-template-compiler -D```
    vue-template-compiler作为vue模板编译器，vue-loader必须
-6. 创建webpack配置文件: webpack.config.js
+5. 创建webpack配置文件: webpack.config.js
 ```
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -39,13 +38,13 @@ module.exports = {
     ]
 }
 ```
-7. 在package.json中配置npm脚本
+6. 在package.json中配置npm脚本
 ```
 "scripts": { // 在scripts中添加
   "dev": "webpack config webpack.config.js" // 配置npm脚本，使打包更简单
 }
 ```
-8. 创建首页html: index.html
+7. 创建首页html: index.html
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +65,7 @@ module.exports = {
 </html>
 ```
 
-5. 创建项目的根容器Vue组件实例 /src/app.vue
+8. 创建项目的根容器Vue组件实例 /src/app.vue
 ```
 <template>
   <div>
@@ -81,7 +80,7 @@ export default {
 </script>
 ```
 
-6. 实例项目根Vue实例，并挂载Dom节点 main.js
+9. 实例项目根Vue实例，并挂载Dom节点 main.js
 ```
 import Vue from 'vue'
 import App from './App.vue'
