@@ -24,6 +24,26 @@ module.exports = {
             {
                 test: /.css$/,
                 loader: 'css-loader'
+            },
+            {
+                test: /\.(png|jpe?g|gif|webp)(\?.*)?$/, // 正则匹配各种类型图片
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 4096,
+                            fallback: {
+                              loader: 'file-loader',
+                              options: {
+                                name: 'img/[name].[hash:8].[ext]', // [hash:8]文件内容hash取前8位,[ext]为资源扩展名
+                              }
+                            },
+                            // 由于file-loader默认是使用es6的模块语法生成文件，而我们在vue文件中引入该文件，是无法解析浏览器环境才能用的es6模块语法的
+                            // 于是在此我们将esModule设为false，使用commonjs语法生成文件，以便我们在node环境中可以解析
+                            esModule: false 
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -40,7 +60,6 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: resolve('dist'), // 配置服务器从哪个位置提供内容
         host: '0.0.0.0', // 使外部主机可访问该服务器
         clientLogLevel: 'warning', // 限制热替换、重载时警告级别以上的log才在控制台输出
         compress: true, // 请求服务都启用gzip 压缩

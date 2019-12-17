@@ -16,7 +16,7 @@ devServer: {
 3. 在 package.json 中添加 npm 脚本：
 
 ```
- "start": "webpack-dev-server"
+ "serve": "webpack-dev-server"
 ```
 
 由于 webpack-dev-server 默认开启热替换功能，以上步骤即可满足基本 webpack 开发，而以下配置则是为了更加贴合日常开发的实际需求
